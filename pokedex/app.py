@@ -22,7 +22,6 @@ def subscribe():
     # TODO: add confirmation message
     return redirect(url_for("index"))
 
-
 @app.route("/<pokemon_id>")
 def get_pokemon(pokemon_id):
     try:
