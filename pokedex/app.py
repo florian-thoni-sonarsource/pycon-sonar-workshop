@@ -34,6 +34,8 @@ def close_db(error):
     if "db" in g:
         g.db.cleanup(True)
 
+        
+        
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
