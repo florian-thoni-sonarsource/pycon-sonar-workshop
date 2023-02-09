@@ -22,6 +22,20 @@ def subscribe():
     # TODO: add confirmation message
     return redirect(url_for("index"))
 
+@app.route("/<pokemon_id>")
+def get_pokemon(pokemon_id):
+    try:
+        _, pokemon_name, image_url, description = helper.fetch_pokemon(get_db(), pokemon_id)
+        return render_template(
+            "pokemon.html",
+            description=description,
+            sprites=[image_url],
+            name=pokemon_name,
+            pokemon_id=pokemon_id,
+        )
+    except:
+        return redirect(url_for("index"))
+
 
 def get_db():
     if "db" not in g:
@@ -36,6 +50,8 @@ def close_db(error):
 
         
         
+
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
